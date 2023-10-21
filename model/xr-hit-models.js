@@ -2,15 +2,18 @@ import * as THREE from 'three';
 import { ARButton } from 'three/examples/jsm/webxr/ARButton'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-
+///
+var s = .5 //0.1;
+var r = 0.01 //0.01
+///
 let loadedModels = [];
 let hitTestSource = null;
 let hitTestSourceRequested = false;
 
 let gltfLoader = new GLTFLoader();
-gltfLoader.load('/models/tree1.gltf', onLoad);
-gltfLoader.load('/models/tree2.gltf', onLoad);
-gltfLoader.load('/models/tree3.gltf', onLoad);
+//gltfLoader.load('/models/model.gltf', onLoad);
+gltfLoader.load('/models/coluna1.gltf', onLoad);
+//gltfLoader.load('/models/curva.gltf', onLoad);
 
 function onLoad(gtlf) {
     loadedModels.push(gtlf.scene)
@@ -58,12 +61,14 @@ let controller = renderer.xr.getController(0);
 controller.addEventListener('select', onSelect);
 scene.add(controller)
 
+
+
 function onSelect() {
     if (reticle.visible) {
         let randomIndex = Math.floor((Math.random() * loadedModels.length))
         let model = loadedModels[randomIndex].clone()
         model.position.setFromMatrixPosition(reticle.matrix);
-        model.scale.set(.1, .1, .1)
+        model.scale.set(s, s, s);
         model.name = "model"
         scene.add(model)
     }
@@ -103,10 +108,13 @@ function render(timestamp, frame) {
             }
         }
     }
-    // console.log(scene.children)
+     //console.log(scene.children)
     scene.children.forEach(object => {
+        
         if (object.name === "model") {
-            object.rotation.y += 0.01
+            object.rotation.y += r
+          
+            
         }
     })
     renderer.render(scene, camera)

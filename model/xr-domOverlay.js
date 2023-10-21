@@ -22,8 +22,8 @@ dracoLoader.setDecoderPath('/draco/')
 gltfLoader.setDRACOLoader(dracoLoader)
 
 
-gltfLoader.load('/models/chair.gltf', onLoad);
-gltfLoader.load('/models/bookcase.gltf', onLoad);
+gltfLoader.load('/model.gltf', onLoad);
+gltfLoader.load('/models/model.gltf', onLoad);
 
 
 function onLoad(gltf) {

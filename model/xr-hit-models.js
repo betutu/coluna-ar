@@ -12,7 +12,7 @@ let hitTestSourceRequested = false;
 
 let gltfLoader = new GLTFLoader();
 //gltfLoader.load('/models/model.gltf', onLoad);
-gltfLoader.load('/models/coluna1.gltf', onLoad);
+gltfLoader.load('/models/ver1.gltf', onLoad);
 //gltfLoader.load('/models/curva.gltf', onLoad);
 
 function onLoad(gtlf) {
